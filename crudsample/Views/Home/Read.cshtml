@@ -1,0 +1,44 @@
+﻿@model IEnumerable<crudsample.Models.Home>
+
+	@{
+		ViewData["title"] = "Read";
+	}
+	<h3>Read</h3>
+
+	<div>
+		<a asp-action="Create" class="btn btn-warning">Add New</a>
+	</div>
+	<table id="table" class="table" table-bordered mt-4>
+    <thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Password</th>
+			<th>Auction</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var docs in Model)
+		{
+			<tr>
+				<td>@docs.Id</td>
+				<td>@docs.Name</td>
+				<td>@docs.Email</td>
+				<td>@docs.Password</td>
+
+				<td>
+					<a asp-action="Edit" asp-route-id="@docs.Id" class="btn btn-success btn-sm">Edit</a>
+					<a asp-action="Delete" asp-route-id="@docs.Id" class="btn btn-danger btn-sm">Delete</a>
+					<a asp-action="Details" asp-route-id="@docs.Id" class="btn btn-info btn-sm">Details</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+	</table>
+
+	@section Scripts{
+		<script>
+			$('.table').DataTable();
+		</script>
+	}
